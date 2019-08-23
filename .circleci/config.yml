@@ -6,7 +6,12 @@ commands:
     steps:
       - checkout
 
-      - run: gem install bundler --version "2.0.2"
+      - run:
+          sudo gem update --system
+          sudo gem uninstall bundler
+          sudo rm /usr/local/bin/bundle
+          sudo rm /usr/local/bin/bundler
+          sudo gem install bundler
 
       # Restore Cached Dependencies
       - restore_cache:
@@ -52,6 +57,7 @@ jobs:
           PGHOST: localhost
           PGUSER: administrate
           RAILS_ENV: test
+          BUNDLER_VERSION: 2.0.2
       - image: postgres:10.1-alpine
         environment:
           POSTGRES_USER: administrate
