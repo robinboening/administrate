@@ -6,12 +6,11 @@ commands:
     steps:
       - checkout
 
-      - run:
-          sudo gem update --system
-          sudo gem uninstall bundler
-          sudo rm /usr/local/bin/bundle
-          sudo rm /usr/local/bin/bundler
-          sudo gem install bundler
+      - run: sudo gem update --system
+      - run: sudo gem uninstall bundler
+      - run: sudo rm /usr/local/bin/bundle
+      - run: sudo rm /usr/local/bin/bundler
+      - run: sudo gem install bundler
 
       # Restore Cached Dependencies
       - restore_cache:
