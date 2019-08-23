@@ -6,6 +6,8 @@ commands:
     steps:
       - checkout
 
+      - run: gem install bundler --version "2.0.2"
+
       # Restore Cached Dependencies
       - restore_cache:
           name: Restore bundle cache
