@@ -1,4 +1,11 @@
-Rails.application.eager_load!
+if defined?(Zeitwerk)
+  loader = Zeitwerk::Loader.new
+  loader.push_dir(Rails.root.join("app/models"))
+  loader.setup
+else
+  Rails.application.eager_load!
+end
+
 require "rails/generators/base"
 require "administrate/namespace"
 
